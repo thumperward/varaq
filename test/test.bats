@@ -2,32 +2,32 @@
 
 # test cha' before using it in other tests
 @test "varaq-kling cha'" {
-    [ "$( echo "99 cha'" | ./varaq-kling | tail -n +3 )" -eq 99 ]
+    [ "$( echo "99 cha'" | ./varaq-kling | tail -n 3 )" -eq 99 ]
 }
 
 # test disp before using it in other tests
 @test "varaq-engl disp" {
-    [ "$( echo "99 disp" | ./varaq-engl | tail -n +3 )" -eq 99 ]
+    [ "$( echo "99 disp" | ./varaq-engl | tail -n 3 )" -eq 99 ]
 }
 
 # test Hotlh before using it in other tests
 @test "varaq-kling Hotlh" {
-    result=$( echo "9 99 999 Hotlh" | ./varaq-kling | tail -n +4 )
+    result=$( echo "9 99 999 Hotlh" | ./varaq-kling | tail -n 4 )
     [ "$result" = "9 99 999" ]
 }
 
 # test dump before using it in other tests
 @test "varaq-kling dump" {
-    result=$( echo "3 2 1 dump" | ./varaq-engl | tail -n +4 )
+    result=$( echo "3 2 1 dump" | ./varaq-engl | tail -n 4 )
     [ "$result" = "3 2 1" ]
 }
 
 compare_k() {
-    [ "$( echo "$1 Hotlh" | ./varaq-kling | tail -n +4 )" = "$2" ]
+    [ "$( echo "$1 Hotlh" | ./varaq-kling | tail -n 4 )" = "$2" ]
 }
 
 compare_e() {
-    [ "$( echo "$1 dump" | ./varaq-engl | tail -n +4 )" = "$2" ]
+    [ "$( echo "$1 dump" | ./varaq-engl | tail -n 4 )" = "$2" ]
 }
 
 @test "compare using varaq-kling" {

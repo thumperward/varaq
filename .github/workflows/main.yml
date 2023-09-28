@@ -1,3 +1,4 @@
+---
 name: Run tests
 
 on:
@@ -6,19 +7,18 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
-        perl-version: [5.22]
+        os: 
+          - ubuntu-latest
+          - macos-latest
+        perl-version: 
+          - '5.22'
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Install bats on Ubuntu
-        if: matrix.os == 'ubuntu-latest'
-        run: sudo apt-get install -qq bats
-      - name: Install bats on macOS
-        if: matrix.os == 'macos-latest'
+      - name: Install bats
         run: |
           git clone https://github.com/bats-core/bats-core.git
           cd bats-core
